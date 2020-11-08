@@ -1,1 +1,4 @@
-print("Grupa 1\nScrum master arszonto")
+print("""
+    Grupa 1
+    Scrum master arszonto
+""")
