@@ -1,4 +1,4 @@
 print("""
     Grupa 1
-    Tester kubak95
+    Scrum master arszonto
 """)
