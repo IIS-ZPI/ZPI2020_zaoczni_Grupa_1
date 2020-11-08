@@ -1,0 +1,1 @@
+print("Grupa 1\nScrum master arszonto")
