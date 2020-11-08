@@ -1,4 +1,4 @@
 print("""
     Grupa 1
-    DevOps TobiaszBielas
+    Developer ablesable
 """)
