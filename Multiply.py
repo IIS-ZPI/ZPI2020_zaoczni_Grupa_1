@@ -5,4 +5,9 @@ from interfaces import IArithmeticsMult
 class Multiply(IArithmeticsMult):
     def Multiplication(A, B):
         #returning value
-        return A*B
+        if(A>B):
+            print("A is bigger than B")
+            return A*B
+        else:
+            return A*B
+        
