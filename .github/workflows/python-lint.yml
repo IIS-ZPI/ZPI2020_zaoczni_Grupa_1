@@ -3,7 +3,14 @@ name: Python lint
 
 on:
   workflow_dispatch:
-        
+
+  push:
+    branches: 
+      [ master, develop, release ]
+
+  pull_request:
+    branches: 
+      [ master, develop, release ]
 
 jobs:
   build:
