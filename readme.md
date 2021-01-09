@@ -16,3 +16,10 @@ DevOps: Tobiasz Bielas (@TobiaszBielas)
 - [Issues](https://github.com/IIS-Mobile/PG2D_zima_2020_21_niestacjonarne_gr_1)  
 - [Specyfikacja techniczna](doc/specyfikacja_techniczna.md)  
 - [Instrukcja użytkownika](doc/instrukcja_uzytkownika.md)  
+
+## Archiwum
+Archiwalne branche z zadaniami poprzeadzającymi projekt znajdują się na następujących branchach:  
+- legacy_master  
+- legacy_develop  
+- legacy_release  
+Ponadto pod tagiem 1.2.0 znajduje się ostatnie wydanie z tego okresu.
