@@ -15,6 +15,7 @@ DevOps: Tobiasz Bielas (@TobiaszBielas)
 
 ## Odnośniki
 - [Issues](https://github.com/IIS-Mobile/PG2D_zima_2020_21_niestacjonarne_gr_1)  
+- [Tablica Kanban](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/projects/1)  
 - [Specyfikacja techniczna](doc/specyfikacja_techniczna.md)  
 - [Instrukcja użytkownika](doc/instrukcja_uzytkownika.md)  
 
