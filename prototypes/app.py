@@ -1,12 +1,19 @@
 import requests
  
-address = input("please enter request according to instruction: ") 
+def getRequest():
+   return input("please enter request according to instruction: ") 
 
-r = requests.get(address)
+def parseResponse(address):
+   return requests.get(address)
 
-print(r.json())
+def showResponse(response):
+   print(response.json())
 
-#writing json to the file
+def saveResponse(response):
+   with open('response.txt', 'w') as f:
+      f.write(response)
 
-with open('response.txt', 'w') as f:
-   f.write(r.text)
+if __name__ == "__main__":
+   response = parseResponse(getRequest())
+   showResponse(response)
+   saveResponse(response)
