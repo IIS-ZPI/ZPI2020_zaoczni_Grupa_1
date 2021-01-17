@@ -1,8 +1,24 @@
 from unittest import TestCase
 
 from time import perf_counter_ns
+import os
 
 from app.DataParser import DataParser
+
+#Utility functions
+def create_empty_file_in_directory(filename, subdirectory_path):
+    directory_path = os.path.join(os.getcwd(), subdirectory_path)
+    file_path = os.path.join(os.getcwd(), directory_path, filename)
+    if (os.path.exists(directory_path) == False):
+        os.mkdir(directory_path)
+    if os.path.isfile(file_path):
+        os.remove(file_path)
+    try:
+        open(filename, "w")
+    except IOError:
+        return None
+    return file_path
+
 
 class TestDataParser(TestCase):
     threshold = 2000 #nanoseconds
@@ -44,11 +60,14 @@ class TestDataParser(TestCase):
         return execution_time
 
     def test_parse_session_performance(self):
-        cycles_test_amount_of_days = [1, 7, 14]
-        print("")
-        for amount_of_days in cycles_test_amount_of_days:
+        file_path = create_empty_file_in_directory("DataParser_get_session.txt", "test/performancetest/results")
+        if not file_path:
+            self.fail(f"Couldn't create {file_path}")
+        #print(len(TestDataParser.session_data_rates))
+        for amount_of_days in range(1, len(TestDataParser.session_data_rates["rates"])+1):
             result = self.__performance_run(amount_of_days)
-            print(f"Number of days: {amount_of_days} | Execution time: {result}")
+            with open(file_path, "a") as res_file:
+                res_file.write(f"Number of days: {amount_of_days} | Execution time: {result}\n")
             self.assertTrue(
                 result < amount_of_days * TestDataParser.threshold * 5 \
                 if amount_of_days == 1 \
