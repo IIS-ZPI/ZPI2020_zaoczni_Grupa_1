@@ -5,7 +5,7 @@ from time import perf_counter_ns
 from app.DataParser import DataParser
 
 class TestDataParser(TestCase):
-    threshold = 4000 #nanoseconds
+    threshold = 2000 #nanoseconds
 
     session_data_header = {
         'code': 'USD',
@@ -49,4 +49,8 @@ class TestDataParser(TestCase):
         for amount_of_days in cycles_test_amount_of_days:
             result = self.__performance_run(amount_of_days)
             print(f"Number of days: {amount_of_days} | Execution time: {result}")
-            self.assertTrue(result < amount_of_days * TestDataParser.threshold)
+            self.assertTrue(
+                result < amount_of_days * TestDataParser.threshold * 5 \
+                if amount_of_days == 1 \
+                else result < amount_of_days * TestDataParser.threshold
+            )
