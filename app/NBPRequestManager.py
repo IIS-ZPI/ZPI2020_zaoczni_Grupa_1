@@ -28,8 +28,17 @@ class NBPRequestManager:
         return response
 
     def get_statistics(currency, timeframe):
-        #TODO
-        pass
+        
+        yesterday = date.today() - timedelta(days=1) #starting since yesterday
+        startdate = date.today() - NBPRequestManager.timedeltasList[timeframe]
+        
+        json_address = f"http://api.nbp.pl/api/exchangerates/rates/a/{currency}/{startdate}/{yesterday}/"
+        try:
+            response = get_request(json_address)
+        except RequestException:
+            print("Błąd pobierania danych")
+            return None
+        return response
 
     def get_ratio_changes(currency_one, currency_two, timeframe):
         #TODO
