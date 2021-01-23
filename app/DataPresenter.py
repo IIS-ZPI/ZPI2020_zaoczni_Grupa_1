@@ -15,7 +15,10 @@ class DataPresenter:
         results = DataParser.parse_statistics(statistics_data)
 
         if results:
-            print(f"Mediana wyników: {results['median']}\nDominanta wyników: {results['mode']}\nOdchylenie standardowe zbioru : {results['standard deviation value']}\nWspółczynnik zmienności zbioru : {results['coeficient of Variation']}\n")
+            print(f"Mediana wyników: {results['median']}")
+            print(f"Dominanta wyników:{results['mode']}")
+            print(f"Odchylenie standardowe zbioru : {results['standard deviation value']}")
+            print(f"Współczynnik zmienności zbioru : {results['coeficient of Variation']}")
 
     def show_ratio_changes(currency_one, currency_two, timeframe):
         ratio_changes_data = NBPRequestManager.get_ratio_changes(currency_one, currency_two, timeframe)
