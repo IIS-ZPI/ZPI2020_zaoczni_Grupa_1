@@ -19,3 +19,10 @@ jobs:
         WITH_V: false
         RELEASE_BRANCHES: release
         DEFAULT_BUMP: patch
+
+    - name: Create artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: release-${{ steps.tag_version.outputs.new_tag }}
+        path: ./*
+      if: ${{ always() }}

@@ -17,3 +17,10 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: false
         DEFAULT_BUMP: patch
+
+    - name: Create artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: master-${{ steps.tag_version.outputs.new_tag }}
+        path: ./*
+      if: ${{ always() }}
