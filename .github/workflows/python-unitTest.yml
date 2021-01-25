@@ -31,8 +31,9 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         
     - name: Test with pytest
-      run:
+      run: |
         python -m pytest --cov-config .coveragerc  --cov=. ./test/unittest
+        python -m pytest --cov-report html --cov-config .coveragerc  --cov=. ./test/unittest
 
     - name: Create artifact code coverage report
       uses: actions/upload-artifact@v2
