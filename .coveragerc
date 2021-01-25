@@ -13,3 +13,6 @@ exclude_lines =
     if 0:
     if __name__ == .__main__.:
 skip_empty = True
+
+[html]
+directory = ./coverage_report
