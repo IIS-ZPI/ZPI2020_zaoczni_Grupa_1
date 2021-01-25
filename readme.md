@@ -26,7 +26,11 @@ DevOps: Tobiasz Bielas (@TobiaszBielas)
 Ze względu na formę pracy (między innymii ograniczoną możliwość kontaktu w tygodniu oraz fakt, że poszczególni członkowie pracują nad projektem w czasie wolnym), przyjęta została właśnie taka, niestandardowa forma organizacji spotkań. Natomiast cały zespół został 'przeszkolony' z tego jak faktycznie wygląda praca w metodyce Agile, które elementy zostały zmienione, jak w rzeczywistości wygląda np. "Retroperspective", czym są "Story Points" itd.  
 
 ## Konfiguracja CI  
-System CI jest skonfigurowany w Github Actions. Z tego względu nie mamy żadnych dodatkowych danych konfiguracyjnych - wszystko jest dostępne dla każdego contributora repozytorium.  
+System CI jest skonfigurowany w Github Actions. Z tego względu nie mamy żadnych dodatkowych danych konfiguracyjnych - wszystko jest dostępne dla każdego contributora repozytorium. 
+* Korzystanie z automatycznego tagowania(gałęzie master i release):
+  * wiadomość commit'a + #patch --> x.y.(z+1)
+  * wiadomość commit'a + #minor --> x.(y+1).0
+  * wiadomość commit'a + #major --> (x+1)).0.0
 
 ## Odnośniki
 - [Issues](https://github.com/IIS-Mobile/PG2D_zima_2020_21_niestacjonarne_gr_1)  
