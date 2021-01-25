@@ -32,3 +32,10 @@ jobs:
     - name: Test with pytest
       run: |
         pytest ./test/performancetest
+
+    - name: Create artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: data-parser-session
+        path: test/performancetest/results/*
+      if: ${{ always() }}
