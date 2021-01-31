@@ -41,7 +41,6 @@ class NBPRequestManager:
         return response
 
     def get_ratio_changes(currency, timeframe):
-        
         yesterday = date.today() - timedelta(days=1) #starting since yesterday
         startdate = date.today() - NBPRequestManager.timedeltasList[timeframe]
 

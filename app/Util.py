@@ -10,7 +10,4 @@ def parse_timeframe(option, timeframeType):
     if timeframeType == ArgumentType.TIMEFRAME_ALL:
         return TimeframeType(idx)
     elif timeframeType == ArgumentType.TIMEFRAME_LONG:
-        if (idx < 3):
-            return TimeframeType(idx + 2)
-        else:
-            return TimeframeType.INVALID
+        return TimeframeType(idx + 2) if idx <=2 and idx >=1 else TimeframeType.INVALID

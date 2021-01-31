@@ -74,9 +74,4 @@ class DataParser:
         first_change = currency_one_values[-1]/currency_one_values[0]
         second_change = currency_two_values[-1]/currency_two_values[0]
 
-        compare_change = round(first_change/second_change*100)
-
-        first_change = round(first_change*100)-100 
-        second_change= round(second_change*100)-100
-
-        return {"first change": first_change, "second change": second_change, "compare change": compare_change}
+        return round(first_change/second_change * 100 - 100,  4)

@@ -27,15 +27,5 @@ class DataPresenter:
         results = DataParser.parse_ratio_changes(ratio_changes_data_one, ratio_changes_data_two)
 
         if results:
-            if results['first change'] > 0:
-                print(f"Wartość kursu pierwszej waluty po wybranym okresie : +{results['first change']}%")
-            else:
-                print(f"Wartość kursu pierwszej waluty po wybranym okresie : {results['first change']}%")
-            
-            if results['second change'] > 0:
-                print(f"Wartość kursu drugiej waluty po wybranym okresie : +{results['second change']}%")
-            else:
-                print(f"Wartość kursu drugiej waluty po wybranym okresie : {results['second change']}%")
-            
-            print(f"Stosunek pierwszej waluty do drugiej waluty : {results['compare change']}%")
+            print(f"Zmiana kursu {currency_one} względem {currency_two}: {results}%")
         

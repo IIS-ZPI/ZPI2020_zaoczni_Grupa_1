@@ -12,9 +12,5 @@ class TimeframeType(Enum):
 
 def print_available_timeframes(timeframeType):
     names = ["Tydzień", "Dwa tygodnie", "Miesiąc", "Kwartał", "Rok"]
-    if timeframeType == ArgumentType.TIMEFRAME_ALL:
-        for idx, name in enumerate(names[:3]):
-            print(f"{idx+1}. {name}")
-    else:
-        for idx, name in enumerate(names[2:4]):
-            print(f"{idx+1}. {name}")
+    for idx, name in enumerate(names[2:4]) if timeframeType == ArgumentType.TIMEFRAME_LONG else enumerate(names):
+        print(f"{idx+1}. {name}")
