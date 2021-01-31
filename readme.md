@@ -35,7 +35,7 @@ System CI jest skonfigurowany w Github Actions. Z tego względu nie mamy żadnyc
 ## Odnośniki
 - [Issues](https://github.com/IIS-Mobile/PG2D_zima_2020_21_niestacjonarne_gr_1)  
 - [Tablica Kanban](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/projects/1)  
-- [Specyfikacja techniczna](doc/specyfikacja_techniczna.adoc)  
+- [Specyfikacja techniczna](doc/specyfikacja_architektury.adoc)  
 - [Instrukcja użytkownika](doc/instrukcja_uzytkownika.md)  
 
 ## Archiwum
