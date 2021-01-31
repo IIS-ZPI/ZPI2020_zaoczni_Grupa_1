@@ -21,5 +21,21 @@ class DataPresenter:
             print(f"Współczynnik zmienności zbioru : {results['coeficient of Variation']}")
 
     def show_ratio_changes(currency_one, currency_two, timeframe):
-        ratio_changes_data = NBPRequestManager.get_ratio_changes(currency_one, currency_two, timeframe)
-        #TODO: Parse and present
+        ratio_changes_data_one = NBPRequestManager.get_ratio_changes(currency_one, timeframe).json()
+        ratio_changes_data_two = NBPRequestManager.get_ratio_changes(currency_two, timeframe).json()
+        
+        results = DataParser.parse_ratio_changes(ratio_changes_data_one, ratio_changes_data_two)
+
+        if results:
+            if results['first change'] > 0:
+                print(f"Wartość kursu pierwszej waluty po wybranym okresie : +{results['first change']}%")
+            else:
+                print(f"Wartość kursu pierwszej waluty po wybranym okresie : {results['first change']}%")
+            
+            if results['second change'] > 0:
+                print(f"Wartość kursu drugiej waluty po wybranym okresie : +{results['second change']}%")
+            else:
+                print(f"Wartość kursu drugiej waluty po wybranym okresie : {results['second change']}%")
+            
+            print(f"Stosunek pierwszej waluty do drugiej waluty : {results['compare change']}%")
+        

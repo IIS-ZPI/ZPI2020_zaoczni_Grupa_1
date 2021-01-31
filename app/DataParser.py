@@ -56,5 +56,27 @@ class DataParser:
         return {"median": median_value , "mode": mode_value, "standard deviation value": std_dev_value, "coeficient of Variation": coef_var}        
 
 
-    def parse_ratio_changes(ratio_changes_data):
-        pass
+    def parse_ratio_changes(ratio_changes_data_one, ratio_changes_data_two):
+        if not ratio_changes_data_one or not ratio_changes_data_two:
+            return None
+        
+        currency_one_values = []
+        currency_two_values = []
+
+        try:
+            for element_one, element_two in zip(ratio_changes_data_one['rates'], ratio_changes_data_two['rates']):
+                currency_one_values.append(element_one.get("mid"))
+                currency_two_values.append(element_two.get("mid"))  
+        except:
+            print("Błąd parsowania danych")
+            return None
+        
+        first_change = currency_one_values[-1]/currency_one_values[0]
+        second_change = currency_two_values[-1]/currency_two_values[0]
+
+        compare_change = round(first_change/second_change*100)
+
+        first_change = round(first_change*100)-100 
+        second_change= round(second_change*100)-100
+
+        return {"first change": first_change, "second change": second_change, "compare change": compare_change}
