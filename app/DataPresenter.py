@@ -21,5 +21,11 @@ class DataPresenter:
             print(f"Współczynnik zmienności zbioru : {results['coeficient of Variation']}")
 
     def show_ratio_changes(currency_one, currency_two, timeframe):
-        ratio_changes_data = NBPRequestManager.get_ratio_changes(currency_one, currency_two, timeframe)
-        #TODO: Parse and present
+        ratio_changes_data_one = NBPRequestManager.get_ratio_changes(currency_one, timeframe).json()
+        ratio_changes_data_two = NBPRequestManager.get_ratio_changes(currency_two, timeframe).json()
+        
+        results = DataParser.parse_ratio_changes(ratio_changes_data_one, ratio_changes_data_two)
+
+        if results:
+            print(f"Zmiana kursu {currency_one} względem {currency_two}: {results}%")
+        
