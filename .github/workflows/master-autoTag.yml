@@ -1,0 +1,26 @@
+name: Create tag (Master)
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.26.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        WITH_V: false
+        DEFAULT_BUMP: patch
+
+    - name: Create artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: master-${{ steps.tag_version.outputs.new_tag }}
+        path: ./*
+      if: ${{ always() }}

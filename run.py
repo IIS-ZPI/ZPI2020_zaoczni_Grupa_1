@@ -1,4 +1,4 @@
-print("""
-    Grupa 1
-    Scrum master arszonto
-""")
+from app.Application import Application
+
+app = Application()
+app.run()
