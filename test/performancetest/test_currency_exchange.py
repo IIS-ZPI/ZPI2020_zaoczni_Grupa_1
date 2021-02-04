@@ -31,7 +31,7 @@ class NBPRequestManagerMock:
 
 
 class TestExchange(TestCase):
-    threshold = 250000000  # nanoseconds
+    threshold = 850000000  # nanoseconds
 
     def __performance_run(self):
 
