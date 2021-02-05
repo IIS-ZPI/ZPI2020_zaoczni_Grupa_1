@@ -11,6 +11,7 @@ DevOps: Tobiasz Bielas (@TobiaszBielas)
 2. [21.01](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/files/5792847/Sprint.21.01.Review.pdf)  
 3. [21.02](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/files/5862898/Sprint.21.02.Review.pdf)  
 4. [21.03](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/files/5862923/Sprint.21.03.Review.pdf)  
+5. [21.04](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/files/5899952/Sprint.21.04.Review.pdf)
 
 ## Informacje o procesie Scrum/Agile w projekcie  
 * Każdy 'issue' czyli zadanie, w projekcie jest zamieszczone na tablicy (w modelu bazującym na Kanban).  
@@ -26,12 +27,16 @@ DevOps: Tobiasz Bielas (@TobiaszBielas)
 Ze względu na formę pracy (między innymii ograniczoną możliwość kontaktu w tygodniu oraz fakt, że poszczególni członkowie pracują nad projektem w czasie wolnym), przyjęta została właśnie taka, niestandardowa forma organizacji spotkań. Natomiast cały zespół został 'przeszkolony' z tego jak faktycznie wygląda praca w metodyce Agile, które elementy zostały zmienione, jak w rzeczywistości wygląda np. "Retroperspective", czym są "Story Points" itd.  
 
 ## Konfiguracja CI  
-System CI jest skonfigurowany w Github Actions. Z tego względu nie mamy żadnych dodatkowych danych konfiguracyjnych - wszystko jest dostępne dla każdego contributora repozytorium.  
+System CI jest skonfigurowany w Github Actions. Z tego względu nie mamy żadnych dodatkowych danych konfiguracyjnych - wszystko jest dostępne dla każdego contributora repozytorium. 
+* Korzystanie z automatycznego tagowania(gałęzie master i release):
+  * wiadomość commit'a + #patch --> x.y.(z+1)
+  * wiadomość commit'a + #minor --> x.(y+1).0
+  * wiadomość commit'a + #major --> (x+1)).0.0
 
 ## Odnośniki
 - [Issues](https://github.com/IIS-Mobile/PG2D_zima_2020_21_niestacjonarne_gr_1)  
 - [Tablica Kanban](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/projects/1)  
-- [Specyfikacja techniczna](doc/specyfikacja_techniczna.adoc)  
+- [Specyfikacja techniczna](doc/specyfikacja_architektury.adoc)  
 - [Instrukcja użytkownika](doc/instrukcja_uzytkownika.md)  
 
 ## Archiwum

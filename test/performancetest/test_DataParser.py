@@ -14,7 +14,7 @@ def create_empty_file_in_directory(filename, subdirectory_path):
     if os.path.isfile(file_path):
         os.remove(file_path)
     try:
-        open(filename, "w")
+        open(file_path, "w")
     except IOError:
         return None
     return file_path
