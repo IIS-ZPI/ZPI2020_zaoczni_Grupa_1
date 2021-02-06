@@ -1,125 +1,106 @@
-## Instrukcja Użytkownika
+# Instrukcja Użytkownika
+
+## Opis
+- OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokonywania analiz danych walutowych dostępnych w serwisie NBP.
+
+## Wymagania
+- Python, w wersji 3.0 lub wyższej.  
+
+## Ogólne instrukcje
 - Polecenia w aplikacji zatwierdzane są klawiszem Enter.
 
-### Opis
-OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokonywania analiz danych walutowych dostępnych w serwisie NBP.
-
-### Wymagania
-- Zainstalowany python w wersji 3.0 lub wyższy. 
-
-### Instalacja
-
-- Należy pobrać wersję release dostępną w repozytorium (Obecna wersja 1.3.1). Oraz wypakować jej zawartość do docelowego folderu.
-
-### Uruchomienie
-- Za pomocą komendy poleceń należy znaleźć się w folderze docelowym.
+## Uruchomienie
+- Należy wejść do folderu w którym znajdują się pliki aplikacji.
 ```
 ..\ZPI\ZPI2020_zaoczni_Grupa_1>
 ```  
-Uruchomić aplikację poprzez komendę:
-```
-..\ZPI\ZPI2020_zaoczni_Grupa_1> python run.py
-```
+- Następnie uruchomić plik run.py. Np. bezpośrdenio poprzez pythona.
+
 ## Funkcjonalności
 
 ### 1. Obliczanie sesji walutowych
 
 #### Opis
-Funkcjonalność ta pozwala uzyskać informacje o przebiegu kolejnych sesji (wzrostowa, spadkowa, bez zmian) dla wybranej waluty.
+-Wyświetlanie informacji o przebiegu kolejnych sesji (wzrostowe, spadkowe, bez zmian) dla wybranej waluty.
 
 #### Dane wejściowe
 * Kod Waluty (np. USD)
 * Przedział Czasu (np. miesiąc)
 
 #### Rezultaty
+* Liczba sesji wzrostowych
+* Liczba sesji spadkowych
+* Liczba sesji bez zmian
 
-```
-Wynik: 
-Dni wzrostu: 11
-Dni spadkowe: 10
-Dni bez zmian: 0
-```
 #### Przykład użycia
-1. Użytkownik wprowadza kod waluty "USD"
+1. Użytkownik wprowadza kod waluty "USD".
 ```
 Podaj walutę (kod, np. USD): USD
 ```
 2. Użytkownik wybiera numer odpowiadający przedziałowi czasowemu dwóch tygodni.
-
 ```
 Podaj okres czasu: 2
 ```
-3. Otrzymuje wynik w postaci sumy dni wzrostowych, spadkowych i bez zmiany.
-
+3. Aplikacja wyświetla użytkownikowi wynik w postaci liczby dni kiedy występowała sesja wzrostowa, liczby dni ze spadkiem oraz liczbę dni bez żadnych zmian.
 ```
 Wynik: 
 Dni wzrostu: 4
 Dni spadkowe: 5
 Dni bez zmian: 0
 ```
-4. Aby kontynuować działanie programu wciska przycisk Enter.
 
 ### 2. Obliczanie miar statystycznych
 
 #### Opis
-Funkcjonalność ta pozwala uzyskać informacje o medianie, dominancie, odchyleniu standardowym oraz o współczynniku zmienności dla wybranej waluty.
+- Wyświetlanie informacji o medianie, dominancie, odchyleniu standardowym oraz o współczynniku zmienności dla wybranej przez użytkownika waluty.
 
 #### Dane wejściowe
 * Kod Waluty (np. USD)
 * Przedział Czasu (np. miesiąc)
 
 #### Rezultaty
-```
-Mediana wyników: 3.74
-Dominanta wyników:3.73
-Odchylenie standardowe zbioru : 0.011
-Współczynnik zmienności zbioru : 0.294
-```
+* Mediana wyników
+* Dominanta wyników
+* Odchylenie standardowe zbioru
+* Współczynnik zmienności zbioru
+
 #### Przykład użycia
 1. Użytkownik wprowadza kod waluty GBP i numer odpowiadający przedziałowi czasowemu dla którego interesują go statystyka (3 - miesiąc).
 
-2. Wynik prezentuje się następująco:
+2. Aplikacja wyświetla użytkownikowi Medianę, dominantę, odchylenie standardowe oraz współczynnik zmienności dla Funta Brytyjskiego z okresu 3 miesięcy:
 ```
 Mediana wyników: 5.12
 Dominanta wyników:5.12
 Odchylenie standardowe zbioru : 0.018
 Współczynnik zmienności zbioru : 0.352
 ```
-3. Wcisnąć przycisk Enter by kontynować działanie aplikacji.
 
 ### 3. Rozkład zmian pomiędzy dwoma walutami
 
 #### Opis
-Funkcjonalność ta pozwala na porównanie stosunku zmiany kursów dwóch wybranych przez użytkownika walut w wybranym okresie czasu.
+- Wyświetlanie procentowego stosunku zmiany kursów dwóch wybranych przez użytkownika walut w wybranym przez niego okresie czasu.
 
 #### Dane wejściowe
 * Kod pierwszej waluty (np. GBP)
-
 * Kod drugiej waluty (np. USD)
-
 * Przedział Czasu (Miesiąc lub kwartał)
 
 #### Rezultaty
-```
-Zmiana kursu GBP względem USD: -0.2664%
-```
+* Procentowy stosunek zmiany kursu jednej waluty względem drugiej
 
 #### Przykłady Użycia
+1. Użytkownik wprowadza kod pierwszej waluty - GBP.
 
-1. Użytkownik wprowadza kod pierwszej waluty - GBP
-
-2. Później kod drugiej waluty - USD
+2. Później kod drugiej waluty - USD.
 ```
 Podaj drugą walutę (kod, np. USD):USD
 ```
-3. Wpisuje liczbę odpowiadającą kwartałowi czyli 2.
+3. Wpisuje liczbę odpowiadającą kwartałowi - 2.
 
-4. Otrzymuje wynik procentowy stosunku zmian jednej waluty do drugiej
+4. Aplikacja wyświetla użytkownikowi wynik w postaci procentowego stosunku zmiany jednej waluty do drugiej.
 ```
 Zmiana kursu GBP względem USD: 5.1279%
 ```
-5. Zatwierdza przyciskiem Enter chęć dalszego korzystania z programu.
 
 ### Wyjście z programu.
-
-Aby wyjść z programu należy wcisnąć kombinację klawiszy Ctrl + C.
+- Aby wyjść z programu należy wcisnąć klawisz 4.
