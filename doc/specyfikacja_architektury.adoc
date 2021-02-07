@@ -66,16 +66,26 @@ OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokony
 
 [[section-system-scope-and-context]]
 == Zakres systemu i kontekst
+Niniejszy dokument stanowi wprowadzenie do architektury aplikacji.
 
-=== Kontekst biznesowy
-<todo>
-
-=== Kontekst techniczny
-<todo>
+Z perspektywy wysokopoziomowej aplikacja:
+- Pobiera od użytkownika żądanie przedstawienia danych walutowych
+- Ustanawia połączenie z interfejsem NBP i pobiera niezbędne dane walutowe
+- Wyświetla wyniki w postaci przystępnej dla użytkownika
 
 [[section-solution-strategy]]
 == Strategia rozwiązania
-<todo>
+=== Modularność
+System składa się z osobnych klas pełniących jedno konkretne zadanie, 
+w myśl zasady jednej odpowiedzialności.
+
+=== Elastyczna konstrukcja UI
+Interfejs użytkownika powinien być zaprojektowany tak
+aby być elastyczny i łatwo rozszerzalny - 
+dodanie nowej funkcjonalności/komendy powinno wymagać zmian
+tylko w jednym miejscu programu. 
+Preferowane jest zastosowanie typowania parametrów 
+oraz wzorca command.
 
 [[section-building-block-view]]
 == Widok blokowy
@@ -104,10 +114,6 @@ OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokony
 === Węzły / artefakty
 <todo>
 
-[[section-concepts]]
-== Koncepcje przekrojowe
-<todo>
-
 [[section-design-decisions]]
 == Decyzje projektowe
 === Interfejs użytkownika w postaci CLI
@@ -119,33 +125,77 @@ Informacje na temat dostępnych parametrów oraz opisy funkcjonalności wyświet
 == Scenariusze jakościowe
 
 === Testowalność - pokrycie testami jednostkowymi
-<todo>
-
-=== Testowalność - niezależne komponenty
-<todo>
+Nie jest jednoznacznie określony próg procentowy pokrycia całości kodu testami jednotkowymi.
+Głównym założeniem jest utrzymanie pokrycia na poziomie 90%+ dla elementów dokonujących
+parsowania danych oraz obliczeń. 
+Zupełnie wykluczone z obowiązku testowania są:
+- Funkcje wyświetlające wyniki. Nie ma sensu testowanie wyjścia konsoli, poprawność
+i sensowność komunikatów będzie podczas testów manualnych w przypadku modyfikacji
+tych elementów.
+- Odpowiedzi na żądania wobec API NBP. Nie jest konieczne dublowanie pracy
+developerów z zespołu NBP.
 
 === Testowalność - scenariusze integracyjne/funkcjonalne
-<todo>
+Scenariusze testów integracyjnych/funkcjonalnych muszą obejmować 
+cykl pracy (workflow) każdej z podstawowych funkcjonalności
+dostępnych dla użytkownika.
 
 === Wydajność - limity testów wydajnościowych
-<todo>
+Projekt nie narzuca konkretnych wymagań co do wydajności aplikacji.
+Raporty z testów wydajnościowych są generowane,
+jednak nie ma ustalonego limitu przekroczenie którego 
+oznaczałoby testy za zakończone niepowodzeniem.
 
 [[section-technical-risks]]
 == Ryzyko techniczne i dług technologiczny
-<todo>
+* Aplikacja powstaje od podstaw. Brak długu technologicznego.
+* Zespół nie sklasyfikował również żadnego istotnego ryzyka technicznego.
 
 [[section-glossary]]
 == Glosariusz
 
 [options="header"]
 |===
-| Pojęcie         | Definicja
-| Python     | <todo>
-| NBP     | <todo>
-| CLI     | <todo>
-| API     | <todo>
-| Whitebox     | <todo>
-| Blackbox     | <todo>
-| UT    | <todo>
-| SOLID    | <todo>
+| Pojęcie | Definicja
+| Python | 
+Język programowania wysokiego poziomu ogólnego przeznaczenia.
+Posiada w pełni dynamiczny system typów i automatyczne zarządzanie pamięcią.
+(źródło: https://pl.wikipedia.org/wiki/Python)
+| NBP |
+Narodowy Bank Polski.
+| CLI |
+Wiersz poleceń (ang. command line interpreter/interface, CLI).
+Sposób interakcji użytkownika z komputerem.
+| API |
+Interfejs programowania aplikacji
+(ang. application programming interface, API).
+zbiór reguł ściśle opisujący, w jaki sposób 
+programy lub podprogramy komunikują się ze sobą.
+(źródło: https://pl.wikipedia.org/wiki/Interfejs_programowania_aplikacji)
+| Whitebox |
+Testy strukturalne 
+(ang. white-box testing, testy białej skrzynki, in. szklanej skrzynki) 
+– rodzaj testów w inżynierii oprogramowania, polegających na testowaniu 
+programu poprzez podawanie na wejściu takich danych, 
+aby program przeszedł przez każdą zaimplementowaną ścieżkę.
+(źródło: https://pl.wikipedia.org/wiki/Testy_strukturalne)
+| Blackbox |
+Testowanie w Black Box to metoda testowania oprogramowania, 
+która służy do testowania oprogramowania bez znajomości 
+wewnętrznej struktury kodu lub programu.
+Nie jest badana struktura wewnętrzna oprogramowania. 
+Sposób przetwarzania pozostaje nieznany. 
+Znane są dane wejściowe i oczekiwany rezultat.
+(źródło: https://pl.itpedia.nl/2019/01/23/black-box-testing-software-op-de-pijnbank)
+| UT |
+Test jednostkowy (ang. unit test) – 
+metoda testowania tworzonego oprogramowania poprzez wykonywanie testów 
+weryfikujących poprawność działania pojedynczych elementów (jednostek) programu 
+– np. metod lub obiektów w programowaniu obiektowym 
+lub procedur w programowaniu proceduralnym.
+(źródło: https://pl.wikipedia.org/wiki/Test_jednostkowy)
+| SOLID |
+SOLID – mnemonik zaproponowany przez Roberta C. Martina, 
+opisujący pięć podstawowych założeń programowania obiektowego.
+(źródło: https://pl.wikipedia.org/wiki/SOLID_(programowanie_obiektowe) )
 |===
