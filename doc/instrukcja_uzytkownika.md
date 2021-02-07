@@ -1,31 +1,30 @@
 # Instrukcja Użytkownika
 
 ## Opis
-- OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokonywania analiz danych walutowych dostępnych w serwisie NBP.
+OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokonywania analiz danych walutowych dostępnych w serwisie NBP.
 
 ## Wymagania
-- Python, w wersji 3.0 lub wyższej.  
-
-## Ogólne instrukcje
-- Polecenia w aplikacji zatwierdzane są klawiszem Enter.
+Python, w wersji 3.0 lub wyższej.
 
 ## Uruchomienie
-- Należy wejść do folderu w którym znajdują się pliki aplikacji.
-```
-..\ZPI\ZPI2020_zaoczni_Grupa_1>
-```  
-- Następnie uruchomić plik run.py. Np. bezpośrdenio poprzez pythona.
+Program jest uruchamiany poprzez plik skryptowy "run.py", znajdujący się w katalogu instalacyjnym aplikacji.
+
+## Obsługa programu
+- Aplikacja oferuje interfejs tekstowy (CLI).
+- Użytkownik wprowadza w niej wartości znaczące np. USD.
+- Komendy wybiera się poprzez wprowadzenie odpowiadającego numeru z listy.
+- Polecenia w aplikacji zatwierdzane są klawiszem Enter.
 
 ## Funkcjonalności
 
 ### 1. Obliczanie sesji walutowych
 
 #### Opis
--Wyświetlanie informacji o przebiegu kolejnych sesji (wzrostowe, spadkowe, bez zmian) dla wybranej waluty.
+Wyświetlanie informacji o przebiegu kolejnych sesji (wzrostowe, spadkowe, bez zmian) dla wybranej waluty.
 
 #### Dane wejściowe
-* Kod Waluty (np. USD)
-* Przedział Czasu (np. miesiąc)
+* Kod Waluty 
+* Przedział Czasu 
 
 #### Rezultaty
 * Liczba sesji wzrostowych
@@ -52,11 +51,11 @@ Dni bez zmian: 0
 ### 2. Obliczanie miar statystycznych
 
 #### Opis
-- Wyświetlanie informacji o medianie, dominancie, odchyleniu standardowym oraz o współczynniku zmienności dla wybranej przez użytkownika waluty.
+Wyświetlanie informacji o medianie, dominancie, odchyleniu standardowym oraz o współczynniku zmienności dla wybranej przez użytkownika waluty.
 
 #### Dane wejściowe
-* Kod Waluty (np. USD)
-* Przedział Czasu (np. miesiąc)
+* Kod Waluty 
+* Przedział Czasu 
 
 #### Rezultaty
 * Mediana wyników
@@ -78,12 +77,12 @@ Współczynnik zmienności zbioru : 0.352
 ### 3. Rozkład zmian pomiędzy dwoma walutami
 
 #### Opis
-- Wyświetlanie procentowego stosunku zmiany kursów dwóch wybranych przez użytkownika walut w wybranym przez niego okresie czasu.
+Wyświetlanie procentowego stosunku zmiany kursów dwóch wybranych przez użytkownika walut w wybranym przez niego okresie czasu.
 
 #### Dane wejściowe
-* Kod pierwszej waluty (np. GBP)
-* Kod drugiej waluty (np. USD)
-* Przedział Czasu (Miesiąc lub kwartał)
+* Kod pierwszej waluty 
+* Kod drugiej waluty 
+* Przedział Czasu 
 
 #### Rezultaty
 * Procentowy stosunek zmiany kursu jednej waluty względem drugiej
@@ -103,4 +102,4 @@ Zmiana kursu GBP względem USD: 5.1279%
 ```
 
 ### Wyjście z programu.
-- Aby wyjść z programu należy wcisnąć klawisz 4.
+Użytkownik wychodzi z programu wybierając odpowiednią komendę z listy w menu aplikacji. 
