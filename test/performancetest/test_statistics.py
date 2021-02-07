@@ -12,8 +12,8 @@ class TestStatisticsDataParser(TestCase):
     threshold = 700000  # nanoseconds
 
     def __performance_run(self, amount_of_days, method):
-        session_data = valid_test_USD_data
-        session_data['rates'] = valid_test_USD_data['rates'][:amount_of_days]
+        session_data = valid_test_USD_data["dataset"].copy()
+        session_data['rates'] = session_data['rates'][:amount_of_days]
 
         t_start = perf_counter_ns()
         method(session_data)
@@ -29,7 +29,7 @@ class TestStatisticsDataParser(TestCase):
         if not file_path:
             self.fail(f"Couldn't create {file_path}")
 
-        for amount_of_days in range(2, len(valid_test_USD_data['rates'])+1):
+        for amount_of_days in range(2, len(valid_test_USD_data["dataset"]['rates'])+1):
             result = self.__performance_run(
                 amount_of_days, DataParser.parse_statistics)
             with open(file_path, "a") as res_file:

@@ -4,8 +4,8 @@ from requests.exceptions import RequestException
 from app.DataParser import DataParser
 
 
-from test.data_for_tests import currency_EUR_exchange
-from test.data_for_tests import currency_USD_exchange
+from test.data_for_tests import valid_test_USD_data
+from test.data_for_tests import valid_test_EUR_data
 
 
 class NBPRequestManagerMock:
@@ -32,13 +32,13 @@ class TestCurrencyExchange(TestCase):
     def test_get_currency_data_USD(self):
         mock = NBPRequestManagerMock()
         actual_result_mock = mock.get_ratio_changes("USD").json()
-        expected_result = currency_USD_exchange
+        expected_result = valid_test_USD_data["dataset"].copy()
         self.assertEqual(expected_result, actual_result_mock)
 
     def test_get_currency_data_EUR(self):
         mock = NBPRequestManagerMock()
         actual_result_mock = mock.get_ratio_changes("EUR").json()
-        expected_result = currency_EUR_exchange
+        expected_result = valid_test_EUR_data["dataset"].copy()
         self.assertEqual(expected_result, actual_result_mock)
 
     def test_get_currency_data_wrong_data(self):
@@ -47,7 +47,7 @@ class TestCurrencyExchange(TestCase):
             actual_result_mock = mock.get_ratio_changes("WRONG").json()
         except:
             actual_result_mock = mock.get_ratio_changes("WRONG")
-        expected_result = currency_EUR_exchange
+        expected_result = valid_test_EUR_data.copy()
         self.assertNotEqual(expected_result, actual_result_mock)
 
     def test_show_ratio_change_mock(self):
