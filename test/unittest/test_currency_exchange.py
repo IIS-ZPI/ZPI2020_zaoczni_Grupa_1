@@ -6,67 +6,42 @@ from app.DataParser import DataParser
 
 from test.data_for_tests import valid_test_USD_data
 from test.data_for_tests import valid_test_EUR_data
-
-
-class NBPRequestManagerMock:
-    def get_ratio_changes(self, currency):
-
-        json_address = f"http://api.nbp.pl/api/exchangerates/rates/a/{currency}/2020-12-31/2021-01-30/"
-        try:
-            response = get_request(json_address)
-        except RequestException:
-            print("Błąd pobierania danych")
-            return None
-        return response
-
-    def show_ratio_changes(self, currency_one, currency_two):
-        ratio_changes_data_one = self.get_ratio_changes(currency_one).json()
-        ratio_changes_data_two = self.get_ratio_changes(currency_two).json()
-
-        results = DataParser.parse_ratio_changes(
-            ratio_changes_data_one, ratio_changes_data_two)
-        return results
+from test.data_for_tests import invalid_test_data
 
 
 class TestCurrencyExchange(TestCase):
-    def test_get_currency_data_USD(self):
-        mock = NBPRequestManagerMock()
-        actual_result_mock = mock.get_ratio_changes("USD").json()
-        expected_result = valid_test_USD_data["dataset"].copy()
-        self.assertEqual(expected_result, actual_result_mock)
+    def test_get_currency_data_EUR_USD(self):
 
-    def test_get_currency_data_EUR(self):
-        mock = NBPRequestManagerMock()
-        actual_result_mock = mock.get_ratio_changes("EUR").json()
-        expected_result = valid_test_EUR_data["dataset"].copy()
-        self.assertEqual(expected_result, actual_result_mock)
+        session_data_EUR = valid_test_EUR_data["dataset"].copy()
+        session_data_USD = valid_test_USD_data["dataset"].copy()
+        actual_result = DataParser.parse_ratio_changes(
+            session_data_EUR, session_data_USD)
+        expected_result = -1.3278
+        self.assertEqual(expected_result, actual_result)
 
-    def test_get_currency_data_wrong_data(self):
-        mock = NBPRequestManagerMock()
-        try:
-            actual_result_mock = mock.get_ratio_changes("WRONG").json()
-        except:
-            actual_result_mock = mock.get_ratio_changes("WRONG")
-        expected_result = valid_test_EUR_data.copy()
-        self.assertNotEqual(expected_result, actual_result_mock)
+    def test_get_currency_data_USD_EUR(self):
 
-    def test_show_ratio_change_mock(self):
-        mock = NBPRequestManagerMock()
-        actual_result = mock.show_ratio_changes("USD", "EUR")
+        session_data_EUR = valid_test_EUR_data["dataset"].copy()
+        session_data_USD = valid_test_USD_data["dataset"].copy()
+        actual_result = DataParser.parse_ratio_changes(
+            session_data_USD, session_data_EUR)
         expected_result = 1.3457
         self.assertEqual(expected_result, actual_result)
 
-    def test_show_ratio_change_mock_wrong_result(self):
-        mock = NBPRequestManagerMock()
-        actual_result = mock.show_ratio_changes("EUR", "USD")
-        expected_result = 1.3457
-        self.assertNotEqual(expected_result, actual_result)
+    def test_get_currency_data_USD_invalid_data(self):
+        session_data_USD = valid_test_USD_data["dataset"].copy()
 
-    def test_show_ratio_change_mock_wrong_currency(self):
-        mock = NBPRequestManagerMock()
-        try:
-            actual_result = mock.show_ratio_changes("WRONG_CURRENCY", "USD")
-        except:
-            actual_result = None
-        expected_result = 1.3457
-        self.assertNotEqual(expected_result, actual_result)
+        actual_result = DataParser.parse_ratio_changes(
+            session_data_USD, invalid_test_data.copy())
+
+        expected_result = None
+        self.assertEqual(expected_result, actual_result)
+
+    def test_get_currency_data_wrong_data(self):
+        session_data_EUR = valid_test_EUR_data["dataset"].copy()
+
+        actual_result = DataParser.parse_ratio_changes(
+            invalid_test_data.copy(), session_data_EUR)
+
+        expected_result = None
+        self.assertEqual(expected_result, actual_result)
