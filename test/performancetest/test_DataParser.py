@@ -8,9 +8,7 @@ from test.utility_functions import create_empty_file_in_directory
 
 
 class TestDataParser(TestCase):
-    # tyle zeby przeszlo u mnie na 100 procentuf
-    threshold = 20000000000000000000000000
-    # threshold = 2000  # nanoseconds
+    threshold = 2000  # nanoseconds
 
     def __performance_run(self, amount_of_days, method):
         session_data = valid_test_USD_data
