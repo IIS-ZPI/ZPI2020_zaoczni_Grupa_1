@@ -10,6 +10,7 @@
 OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokonywania analiz danych walutowych dostępnych w serwisie NBP.
 
 === Przegląd funkcjonalności
+
 * Wyznaczenie ilości sesji wzrostowych, spadkowych i bez zmian.
 * Wyznaczanie miar statystycznych: miediana, dominanta, odchylenie standardowe i współczynnik zmienności.
 * Wyznaczanie rozkładu zmian miesięcznych i kwartalnych w dowolnych parach walutowych.
@@ -69,9 +70,9 @@ OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokony
 Niniejszy dokument stanowi wprowadzenie do architektury aplikacji.
 
 Z perspektywy wysokopoziomowej aplikacja:
-- Pobiera od użytkownika żądanie przedstawienia danych walutowych
-- Ustanawia połączenie z interfejsem NBP i pobiera niezbędne dane walutowe
-- Wyświetla wyniki w postaci przystępnej dla użytkownika
+* Pobiera od użytkownika żądanie przedstawienia danych walutowych
+* Ustanawia połączenie z interfejsem NBP i pobiera niezbędne dane walutowe
+* Wyświetla wyniki w postaci przystępnej dla użytkownika
 
 [[section-solution-strategy]]
 == Strategia rozwiązania
