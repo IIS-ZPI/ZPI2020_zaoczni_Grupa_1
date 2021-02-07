@@ -70,6 +70,7 @@ OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokony
 Niniejszy dokument stanowi wprowadzenie do architektury aplikacji.
 
 Z perspektywy wysokopoziomowej aplikacja:
+
 * Pobiera od użytkownika żądanie przedstawienia danych walutowych
 * Ustanawia połączenie z interfejsem NBP i pobiera niezbędne dane walutowe
 * Wyświetla wyniki w postaci przystępnej dla użytkownika
