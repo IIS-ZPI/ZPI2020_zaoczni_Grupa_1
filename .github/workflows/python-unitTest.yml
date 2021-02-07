@@ -32,8 +32,8 @@ jobs:
         
     - name: Test with pytest
       run: |
-        python -m pytest --cov-config config/.coveragerc  --cov=. ./test/unittest
-        python -m pytest --cov-report html --cov-config config/.coveragerc  --cov=. ./test/unittest
+        python -m pytest --cov-config .github/config/.coveragerc  --cov=. ./test/unittest
+        python -m pytest --cov-report html --cov-config .github/config/.coveragerc  --cov=. ./test/unittest
 
     - name: Create artifact code coverage report
       uses: actions/upload-artifact@v2
