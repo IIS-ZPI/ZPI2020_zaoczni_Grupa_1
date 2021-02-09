@@ -18,7 +18,7 @@ class TestDataParser(TestCase):
 
         self.assertEqual(actual_results, invalid_test_data["results"])
 
-    def test_parse_statistics_valid_data(self):
+    def test_parse_statistics_USD_valid_data(self):
         actual_result = DataParser.parse_statistics(
             valid_test_USD_data["dataset"].copy())
         expected_result = {'median': 3.73, 'mode': 3.73,
@@ -32,38 +32,36 @@ class TestDataParser(TestCase):
 
         self.assertIsNone(actual_result)
 
-    def test_get_currency_data_EUR_USD(self):
-
+    def test_get_currency_data_EUR_USD_valid(self):
         session_data_EUR = valid_test_EUR_data["dataset"].copy()
         session_data_USD = valid_test_USD_data["dataset"].copy()
         actual_result = DataParser.parse_ratio_changes(
             session_data_EUR, session_data_USD)
         expected_result = -1.3278
+
         self.assertEqual(expected_result, actual_result)
 
-    def test_get_currency_data_USD_EUR(self):
-
+    def test_get_currency_data_USD_EUR_valid(self):
         session_data_EUR = valid_test_EUR_data["dataset"].copy()
         session_data_USD = valid_test_USD_data["dataset"].copy()
         actual_result = DataParser.parse_ratio_changes(
             session_data_USD, session_data_EUR)
         expected_result = 1.3457
+
         self.assertEqual(expected_result, actual_result)
 
     def test_get_currency_data_USD_invalid_data(self):
         session_data_USD = valid_test_USD_data["dataset"].copy()
-
         actual_result = DataParser.parse_ratio_changes(
             session_data_USD, invalid_test_data.copy())
-
         expected_result = None
+
         self.assertEqual(expected_result, actual_result)
 
-    def test_get_currency_data_wrong_data(self):
+    def test_get_currency_data_invalid_data_EUR(self):
         session_data_EUR = valid_test_EUR_data["dataset"].copy()
-
         actual_result = DataParser.parse_ratio_changes(
             invalid_test_data.copy(), session_data_EUR)
-
         expected_result = None
+
         self.assertEqual(expected_result, actual_result)
