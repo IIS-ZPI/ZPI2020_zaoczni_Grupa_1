@@ -16,17 +16,20 @@ class UserInterface:
 
         args = []
         for argType in CommandsList[command-1].argumentTypes:
-            if argType == ArgumentType.BASE_CURRENCY:
-                args.append(input("Podaj walutę (kod, np. USD): "))
-            elif argType == ArgumentType.COMPARABLE_CURRENCY:
-                args.append(input("Podaj drugą walutę (kod, np. USD): "))
-            elif argType in [ArgumentType.TIMEFRAME_ALL, ArgumentType.TIMEFRAME_LONG]:
-                print_available_timeframes(argType)
-                timeframe = parse_timeframe(input("Podaj okres czasu:"), argType)
-                if timeframe == TimeframeType.INVALID:
-                    print("Niepoprawny argument")
-                    return
-                args.append(timeframe)
+            try:
+                if argType == ArgumentType.BASE_CURRENCY:
+                    args.append(input("Podaj walutę (kod, np. USD): "))
+                elif argType == ArgumentType.COMPARABLE_CURRENCY:
+                    args.append(input("Podaj drugą walutę (kod, np. USD): "))
+                elif argType in [ArgumentType.TIMEFRAME_ALL, ArgumentType.TIMEFRAME_LONG]:
+                    print_available_timeframes(argType)
+                    timeframe = parse_timeframe(input("Podaj okres czasu:"), argType)
+                    if timeframe == TimeframeType.INVALID:
+                        print("Niepoprawny argument")
+                        return
+                    args.append(timeframe)
+            except EOFError as error:
+                print("Niepoprawny argument")
 
         print("Wynik: ")
         CommandsList[command-1].method(*args)
