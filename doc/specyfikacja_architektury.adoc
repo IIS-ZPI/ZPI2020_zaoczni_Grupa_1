@@ -7,7 +7,8 @@
 
 [[section-introduction-and-goals]]
 == Wprowadzenie
-OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokonywania analiz danych walutowych dostępnych w serwisie NBP.
+OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom 
+dokonywania analiz danych walutowych dostępnych w serwisie NBP.
 
 === Przegląd funkcjonalności
 
@@ -18,19 +19,29 @@ OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokony
 === Cele jakościowe
 |===
 ||Cel|Motywacja
-|QG1|Zrozumiałość|Wymagania funkcjonalne powinny być wystarczająco proste aby umożliwić prostą implementację, pozwalającą skupić się na rozwijaniu znajomości języka Python przez członków zespołu developerskiego.
-|QG2|Testowalność|Architektura powinna pozwalać na proste testowanie wszystkich elementów aplikacji niepowiązanych z interfejsem użytkownika.
-|QG3|Modularność|Aplikacja powinna być oparta o niezależne komponenty, w możliwie największym stopniu pozostające w zgodzie z zasadami SOLID.
+|QG1|Zrozumiałość|Wymagania funkcjonalne powinny być wystarczająco proste aby umożliwić prostą implementację, 
+pozwalającą skupić się na rozwijaniu znajomości języka Python przez członków zespołu developerskiego.
+|QG2|Testowalność|Architektura powinna pozwalać na proste testowanie 
+wszystkich elementów aplikacji niepowiązanych z interfejsem użytkownika.
+|QG3|Modularność|Aplikacja powinna być oparta o niezależne komponenty, 
+w możliwie największym stopniu pozostające w zgodzie z zasadami SOLID.
 |===
 
 === Interesariusze
 |===
 |Rola|Imie i nazwisko|Kontakt|Motywacja
-| _Tech Lead_ | Adrian Panas | 215842@edu.p.lodz.pl | Członek zespołu. Prowadzenie zespołu w metodyce agile, przygotowywanie architektury, wspieranie członków zespołu na różnych płaszczyznach (development, organizacja, testy).
-| _Software Developer_ | Bartosz Soból | 215881@edu.p.lodz.pl | Członek zespołu. Przygotowywanie elementarnych funkcjonalności aplikacji, nauka języka Python oraz szlifowanie umiejętności developerskich.
-| _Agile Tester_ | Jakub Kołaczyński | 215174@edu.p.lodz.pl | Członek zespołu. Przygotowywanie testów, nauka metodyki testowania oprogramowania oraz języka Python.
-| _DevOps Engineer_ | Tobiasz Bielas | 215678@edu.p.lodz.pl | Członek zespołu. Przygotowywanie systemu CI, nauka technologi devOps oraz rozwijanie wiedzy z zakresu tworzenia oprogramowania.
-| _Product Owner_ | Radosław Wajman | radoslaw.wajman@p.lodz.pl | Zleceniodawca projektu. Nadzór nad postępami prac oraz ocena efektu końcowego.
+| _Tech Lead_ | Adrian Panas | 215842@edu.p.lodz.pl | Członek zespołu. 
+Prowadzenie zespołu w metodyce agile, przygotowywanie architektury, 
+wspieranie członków zespołu na różnych płaszczyznach (development, organizacja, testy).
+| _Software Developer_ | Bartosz Soból | 215881@edu.p.lodz.pl | Członek zespołu. 
+Przygotowywanie elementarnych funkcjonalności aplikacji, nauka języka Python 
+oraz szlifowanie umiejętności developerskich.
+| _Agile Tester_ | Jakub Kołaczyński | 215174@edu.p.lodz.pl | Członek zespołu. 
+Przygotowywanie testów, nauka metodyki testowania oprogramowania oraz języka Python.
+| _DevOps Engineer_ | Tobiasz Bielas | 215678@edu.p.lodz.pl | Członek zespołu. 
+Przygotowywanie systemu CI, nauka technologi devOps oraz rozwijanie wiedzy z zakresu tworzenia oprogramowania.
+| _Product Owner_ | Radosław Wajman | radoslaw.wajman@p.lodz.pl | 
+Zleceniodawca projektu. Nadzór nad postępami prac oraz ocena efektu końcowego.
 |===
 
 [[section-architecture-constraints]]
@@ -39,29 +50,59 @@ OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokony
 === Ograniczenia techniczne
 |===
 ||Ograniczenie|Tło
-| TC1 | Wykorzystanie API NBP do pobierania danych walutowych|API udostępniające dane wykorzystywane do kalkulacji jest odgórnie narzucone przez klienta.
-| TC2 | Wykorzystanie języka Python | Język Python pozwala na szybkie implementowanie niewielkich aplikacji oraz zapewnia wbudowane łatwe narzędzia do wykonywania operacji na zbiorach danych (uproszczona składnia względem innych języków - np. collection slicing). Ponadto zespół jednogłośnie wyraził chęć rozwijania znajomości tego języka, podczas gdy osoba odpowiedzialan za przygotowanie architektury dysponuje wystarczającą jego znajomością aby zapewnić członkom zespołu wymagane wsparcie i porady.
-| TC3 | Zewnętrzne biblioteki dostępne na wolnej licencji | Projekt przygotowywany jest w ramach procesu edukacyjnego i zostanie zachowany przez prowadzącego (PO) na poczet dowodu wykonania prac przez członków zespołu. Ze względu na charakter organizacji zlecającej (Uczelnia - Politechnika Łódzka) oraz samego projektu, nie zostały przewidziane fundusze na pozyskanie licencji oprogramowania komercyjnego. Ponadto zespół podczas wstępnej analizy jednogłośnie stwierdził, że dostępne oprogramowanie otwartoźródłowe jest w pełni wystarczające do wykonania projektu.
-| TC4 | Zewnętrzne biblioteki dostępne w managerze paczek | Aplikacja musi być łatwo wdrażalna na platformach użytkowników - bez żmudnego procesu tworzenia zaawansowanego środowiska. Ponadto dostępność bibliotek z poziomu managera paczek ułatwi i przyśpieszy utworzenie systemu CI.
-| TC5 | Niezależność od systemu operacyjnego | Oczekuje się, że aplikacja będzie funkcjonowała u większości potencjalnych użytkowników, a więc na we wszystkich wiodących systemach: MacOS X, Linux oraz Windows.
+| TC1 | Wykorzystanie API NBP do pobierania danych walutowych|API udostępniające 
+dane wykorzystywane do kalkulacji jest odgórnie narzucone przez klienta.
+| TC2 | Wykorzystanie języka Python | Język Python pozwala na szybkie implementowanie 
+niewielkich aplikacji oraz zapewnia wbudowane łatwe narzędzia do wykonywania operacji 
+na zbiorach danych (uproszczona składnia względem innych języków - np. collection slicing). 
+Ponadto zespół jednogłośnie wyraził chęć rozwijania znajomości tego języka, 
+podczas gdy osoba odpowiedzialan za przygotowanie architektury dysponuje wystarczającą 
+jego znajomością aby zapewnić członkom zespołu wymagane wsparcie i porady.
+| TC3 | Zewnętrzne biblioteki dostępne na wolnej licencji | 
+Projekt przygotowywany jest w ramach procesu edukacyjnego 
+i zostanie zachowany przez prowadzącego (PO) na poczet dowodu wykonania prac przez członków zespołu. 
+Ze względu na charakter organizacji zlecającej (Uczelnia - Politechnika Łódzka) oraz samego projektu, 
+nie zostały przewidziane fundusze na pozyskanie licencji oprogramowania komercyjnego. 
+Ponadto zespół podczas wstępnej analizy jednogłośnie stwierdził, 
+że dostępne oprogramowanie otwartoźródłowe jest w pełni wystarczające do wykonania projektu.
+| TC4 | Zewnętrzne biblioteki dostępne w managerze paczek | 
+Aplikacja musi być łatwo wdrażalna na platformach użytkowników - 
+bez żmudnego procesu tworzenia zaawansowanego środowiska. 
+Ponadto dostępność bibliotek z poziomu managera paczek ułatwi i przyśpieszy utworzenie systemu CI.
+| TC5 | Niezależność od systemu operacyjnego | 
+Oczekuje się, że aplikacja będzie funkcjonowała u większości potencjalnych użytkowników, 
+a więc na we wszystkich wiodących systemach: MacOS X, Linux oraz Windows.
 |===
 
 === Ograniczenia organizacyjne
 |===
 ||Ograniczenie|Tło
-| OC1 | Zespół developerski | Skład zespołu developerskiego jest odgórnie określony przez klienta i nie może ulec zmianie przez cały okres trwania prac. Równocześnie każdy z członków zespołu ma odgórnie przypisaną rolę pełnioną w zespole, która również nie może zostać zmieniona w żadnym momencie prac nad projektem. 
-| OC2 | Ramy czasowe | Projekt musi zostać zakończony, zamknięty oraz poddany ocenie w terminie ustalonym z PO, jednak nie później niż przed zakończeniem sesji egzaminacyjnej (28.02.2021r.).
-| OC3 | Konfiguracja projektu niezależna od IDE | Projekt musi być niezależny od środowisk developerskich. Musi istnieć możliwość prowadzenia wszystkich prac developerskich oraz procesu budowania i wdrożenia z poziomu linii poleceń oraz bez żadnego konkretnego formatu plików projektowych (będącego kompatybilnym z określonym oprogramowaniem).
-| OC4 | Sytem kontroli wersji | Całość prac musi zostać prowadzona z wykorzystaniem systemu kontroli wersji zapewniającego dostęp do historii wprowadzanych zmian.
-| OC5 | Framework testowy | Wykorzystanie najpowszechniejszej biblioteki testowej w języku Python - Pytest. Jest to uwarunkowane między innymi chęcią podążania za popularnymi standardami w środowisku programistów języka Python.
-| OC6 | Zakaz publikacji | Projekt podlega ocenie w ramach zaliczenia na uczelni. W związku z tym nie może zostać rozpowszechniony wcześniej niż po zakończeniu i oceneniu prac celem uniknięcia problemów z potencjalnymi tłumaczeniami w kotekście możliwego plagiatu.
+| OC1 | Zespół developerski | Skład zespołu developerskiego jest odgórnie określony 
+przez klienta i nie może ulec zmianie przez cały okres trwania prac. 
+Równocześnie każdy z członków zespołu ma odgórnie przypisaną rolę pełnioną w zespole, 
+która również nie może zostać zmieniona w żadnym momencie prac nad projektem. 
+| OC2 | Ramy czasowe | Projekt musi zostać zakończony, 
+zamknięty oraz poddany ocenie w terminie ustalonym z PO, 
+jednak nie później niż przed zakończeniem sesji egzaminacyjnej (28.02.2021r.).
+| OC3 | Konfiguracja projektu niezależna od IDE | Projekt musi być niezależny od środowisk developerskich. 
+Musi istnieć możliwość prowadzenia wszystkich prac developerskich oraz procesu budowania i 
+wdrożenia z poziomu linii poleceń oraz bez żadnego konkretnego formatu plików projektowych 
+(będącego kompatybilnym z określonym oprogramowaniem).
+| OC4 | Sytem kontroli wersji | Całość prac musi zostać prowadzona z wykorzystaniem systemu kontroli wersji 
+zapewniającego dostęp do historii wprowadzanych zmian.
+| OC5 | Framework testowy | Wykorzystanie najpowszechniejszej biblioteki testowej w języku Python - Pytest. 
+Jest to uwarunkowane między innymi chęcią podążania za popularnymi standardami w środowisku programistów języka Python.
+| OC6 | Zakaz publikacji | Projekt podlega ocenie w ramach zaliczenia na uczelni. 
+W związku z tym nie może zostać rozpowszechniony wcześniej niż po zakończeniu i oceneniu prac 
+celem uniknięcia problemów z potencjalnymi tłumaczeniami w kotekście możliwego plagiatu.
 |===
 
 === Konwencje
 |===
 ||Ograniczenie|Tło
 | CV1 | Standard dokumentacji | Zgodność dokumentacji architektury ze standardem Arc42.
-| CV2 | Konwencja kodu i nazewnictwa | Zgodność tworzonego kodu oprogramowania z dokumentem stylistyki dla języka Python: "PEP 8 -- Style Guide for Python Code".
+| CV2 | Konwencja kodu i nazewnictwa | Zgodność tworzonego kodu oprogramowania z 
+dokumentem stylistyki dla języka Python: "PEP 8 -- Style Guide for Python Code".
 | CV3 | Język dokumentacji | Polski. Język polski jest natywny dla audiencji projektu oraz zespołu developerskiego.
 |===
 
@@ -91,30 +132,31 @@ oraz wzorca command.
 
 [[section-building-block-view]]
 == Widok blokowy
+Poniższy schemat blokowy prezentuje model aplikacji. 
+Większość zależności w aplikacji jest tymczasowa (_temporary association_).
+Ze względu na charakterystykę języka Python (_duck typing_) 
+poniższy diagram klas nie wykorzystuje interfejsów (w postaci klas).
+Jedyny zewnętrzny interfejs stanowi API NBP.
 
-=== Aplikacja (whitebox)
-<todo>
-
-=== Analiza danych (blackbox)
-<todo>
+image::building_block_view.svg[]
 
 [[section-runtime-view]]
 == Widok sekwencyjny
+Poniższy diagram sekwencyjny przedstawia generyczną formę wykonywania funkcjonalności aplikacji.
+Każda z dostępnych w aplikacji funkconalności przebiega w ten sposób - 
+różnica polega na rodzaju, ilości, oraz typie przekazywanych parametrów i zwracanych rezultatów.
 
-=== Wykonywanie poleceń
-<todo>
-
-=== Analiza danych
-<todo>
+image::runtime_view.svg[]
 
 [[section-deployment-view]]
 == Widok wdrożeniowy
-
-=== Wdrożenie aplikacji
-<todo>
-
-=== Węzły / artefakty
-<todo>
+Aplikacja jest dostarczana w postaci paczki zawierającej skrypt uruchomieniowy _run.py_,
+oraz wszystkie niezbędne skrypty potomne (kod źródłowy aplikacji).
+Nie została przewidziana żadna konkretna forma wdrożenia aplikacji,
+głównie ze względu na to, że nie zostało takie wymaganie postawione przez PO/klienta.
+Niezbędne zależności interpretera Python (biblioteki/moduły),
+zostały umieszczone w pliku _requirements.txt_,
+który jest dostarczany wraz z kodem źródłowym. 
 
 [[section-design-decisions]]
 == Decyzje projektowe

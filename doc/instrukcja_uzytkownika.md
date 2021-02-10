@@ -4,7 +4,15 @@
 OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom dokonywania analiz danych walutowych dostępnych w serwisie NBP.
 
 ## Wymagania
-Python, w wersji 3.0 lub wyższej.
+- Python, w wersji 3.0 lub wyższej
+- Moduł *requests* w wersji 2.25.1 lub wyższej
+- Moduł *python-dateutil* w wersji 1.4 lub wyższej
+
+Wszystkie niezbędne moduły można zainstalować jednocześnie poprzez instalację
+managerem PIP (Pythonowy manager modułów) pliku *requirements.txt*,
+dostarczanego wraz z aplikacją.
+
+Przykład: *pip install -r 'requirements.txt'*
 
 ## Uruchomienie
 Program jest uruchamiany poprzez plik skryptowy "run.py", znajdujący się w katalogu instalacyjnym aplikacji.
