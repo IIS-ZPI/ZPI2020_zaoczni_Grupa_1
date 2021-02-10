@@ -8,17 +8,20 @@ class DataPresenter:
         results = DataParser.parse_session(session_data)
         
         if results:
-            print(f"Dni wzrostu: {results['increase']}\nDni spadkowe: {results['decrease']}\nDni bez zmian: {results['stable']}\n")         
+            return f"Dni wzrostu: {results['increase']}\nDni spadkowe: {results['decrease']}\nDni bez zmian: {results['stable']}"
         
     def show_statistics(currency, timeframe):
         statistics_data = NBPRequestManager.get_statistics(currency, timeframe).json()
         results = DataParser.parse_statistics(statistics_data)
 
         if results:
-            print(f"Mediana wyników: {results['median']}")
-            print(f"Dominanta wyników:{results['mode']}")
-            print(f"Odchylenie standardowe zbioru : {results['standard deviation value']}")
-            print(f"Współczynnik zmienności zbioru : {results['coeficient of Variation']}")
+            results_presentation = ""
+            results_presentation += f"Mediana wyników: {results['median']}\n"
+            results_presentation += f"Mediana wyników: {results['median']}\n"
+            results_presentation += f"Dominanta wyników:{results['mode']}\n"
+            results_presentation += f"Odchylenie standardowe zbioru : {results['standard deviation value']}\n"
+            results_presentation += f"Współczynnik zmienności zbioru : {results['coeficient of Variation']}"
+            return results_presentation
 
     def show_ratio_changes(currency_one, currency_two, timeframe):
         ratio_changes_data_one = NBPRequestManager.get_ratio_changes(currency_one, timeframe).json()
@@ -27,5 +30,5 @@ class DataPresenter:
         results = DataParser.parse_ratio_changes(ratio_changes_data_one, ratio_changes_data_two)
 
         if results:
-            print(f"Zmiana kursu {currency_one} względem {currency_two}: {results}%")
+            return f"Zmiana kursu {currency_one} względem {currency_two}: {results}%"
         
