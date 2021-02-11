@@ -1,5 +1,6 @@
 from app.UserInterface import UserInterface
 
+
 class Application:
     def __init__(self):
         self.ui = UserInterface()

@@ -1,5 +1,6 @@
 import statistics
 
+
 class DataParser:
     def parse_session(session_data):
         if not session_data:
@@ -42,7 +43,6 @@ class DataParser:
             print("Błąd parsowania danych")
             return None
 
-
         rounded_values_list = [round(x, 2) for x in values]  # rounding values to 2 elements after coma
         rounded_values_list.sort()  # sorting in ascending order (for median value)
 
@@ -53,9 +53,8 @@ class DataParser:
         std_dev_value = round(statistics.stdev(rounded_values_list), 3)
         coef_var = round((std_dev_value/mean)*100, 3)
 
-        return {"median": median_value, "mode": mode_value, "standard deviation value": std_dev_value, 
-            "coeficient of Variation": coef_var}
-
+        return {"median": median_value, "mode": mode_value, "standard deviation value": std_dev_value,
+                                                                  "coeficient of Variation": coef_var}
 
     def parse_ratio_changes(ratio_changes_data_one, ratio_changes_data_two):
         if not ratio_changes_data_one or not ratio_changes_data_two:
@@ -67,7 +66,7 @@ class DataParser:
         try:
             for element_one, element_two in zip(ratio_changes_data_one['rates'], ratio_changes_data_two['rates']):
                 currency_one_values.append(element_one.get("mid"))
-                currency_two_values.append(element_two.get("mid"))  
+                currency_two_values.append(element_two.get("mid"))
         except ValueError:
             print("Błąd parsowania danych")
             return None
