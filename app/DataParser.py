@@ -24,7 +24,7 @@ class DataParser:
                     else:
                         stable += 1
                 last_mid = current_mid
-        except ValueError:
+        except KeyError:
             print("Błąd parsowania danych")
             return None
 
@@ -39,7 +39,7 @@ class DataParser:
         try:
             for element in statistics_data['rates']:
                 values.append(element.get("mid"))
-        except ValueError:
+        except:
             print("Błąd parsowania danych")
             return None
 
@@ -67,7 +67,7 @@ class DataParser:
             for element_one, element_two in zip(ratio_changes_data_one['rates'], ratio_changes_data_two['rates']):
                 currency_one_values.append(element_one.get("mid"))
                 currency_two_values.append(element_two.get("mid"))
-        except ValueError:
+        except:
             print("Błąd parsowania danych")
             return None
 
