@@ -54,12 +54,12 @@ class DataParser:
         coef_var = round((std_dev_value/mean)*100, 3)
 
         return {"median": median_value, "mode": mode_value, "standard deviation value": std_dev_value,
-                                                                  "coeficient of Variation": coef_var}
+                "coeficient of Variation": coef_var}
 
     def parse_ratio_changes(ratio_changes_data_one, ratio_changes_data_two):
         if not ratio_changes_data_one or not ratio_changes_data_two:
             return None
-        
+
         currency_one_values = []
         currency_two_values = []
 

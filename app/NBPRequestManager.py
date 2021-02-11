@@ -2,8 +2,8 @@ from requests import get as get_request
 from requests.exceptions import RequestException
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
-
 from app.TimeframeType import TimeframeType
+
 
 class NBPRequestManager:
     timedeltasList = {

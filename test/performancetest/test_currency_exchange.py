@@ -30,7 +30,7 @@ class TestCurrencyExchangeDataParser(TestCase):
             self.fail(f"Couldn't create {file_path}")
 
         for amount_of_days in range(1, min(len(valid_test_USD_data["dataset"]
-            ["rates"]), len(valid_test_EUR_data["dataset"]["rates"])) + 1):
+                ["rates"]), len(valid_test_EUR_data["dataset"]["rates"])) + 1):
             result = self.__performance_run(
                 amount_of_days, DataParser.parse_ratio_changes)
             with open(file_path, "a") as res_file:

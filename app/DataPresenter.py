@@ -1,6 +1,5 @@
 from app.NBPRequestManager import NBPRequestManager
 from app.DataParser import DataParser
-import json
 
 
 class DataPresenter:
@@ -9,7 +8,8 @@ class DataPresenter:
         results = DataParser.parse_session(session_data)
 
         if results:
-            return f"Dni wzrostu: {results['increase']}\nDni spadkowe: {results['decrease']}\nDni bez zmian: {results['stable']}"
+            return f"Dni wzrostu: {results['increase']}\nDni spadkowe: 
+            {results['decrease']}\nDni bez zmian: {results['stable']}"
 
     def show_statistics(currency, timeframe):
         statistics_data = NBPRequestManager.get_statistics(currency, timeframe).json()
