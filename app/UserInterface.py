@@ -41,5 +41,5 @@ class UserInterface:
             self.show_commands_list()
             try:
                 self.handle_command(int(input("Wybierz numer komendy: ")))
-            except ValueError:
+            except (ValueError, EOFError, TypeError):
                 print("Niepoprawna komenda")
