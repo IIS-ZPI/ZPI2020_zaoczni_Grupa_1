@@ -7,7 +7,7 @@
 
 [[section-introduction-and-goals]]
 == Wprowadzenie
-OpenNBP Analyzer to aplikacja mający na celu umożliwienie użytkownikom 
+OpenNBP Analyzer to aplikacja mająca na celu umożliwienie użytkownikom 
 dokonywania analiz danych walutowych dostępnych w serwisie NBP.
 
 === Przegląd funkcjonalności
@@ -53,10 +53,10 @@ Zleceniodawca projektu. Nadzór nad postępami prac oraz ocena efektu końcowego
 | TC1 | Wykorzystanie API NBP do pobierania danych walutowych|API udostępniające 
 dane wykorzystywane do kalkulacji jest odgórnie narzucone przez klienta.
 | TC2 | Wykorzystanie języka Python | Język Python pozwala na szybkie implementowanie 
-niewielkich aplikacji oraz zapewnia wbudowane łatwe narzędzia do wykonywania operacji 
+niewielkich aplikacji oraz zapewnia wbudowane narzędzia ułatwiające wykonywanie operacji 
 na zbiorach danych (uproszczona składnia względem innych języków - np. collection slicing). 
 Ponadto zespół jednogłośnie wyraził chęć rozwijania znajomości tego języka, 
-podczas gdy osoba odpowiedzialan za przygotowanie architektury dysponuje wystarczającą 
+podczas gdy osoba odpowiedzialna za przygotowanie architektury dysponuje wystarczającą 
 jego znajomością aby zapewnić członkom zespołu wymagane wsparcie i porady.
 | TC3 | Zewnętrzne biblioteki dostępne na wolnej licencji | 
 Projekt przygotowywany jest w ramach procesu edukacyjnego 
@@ -173,10 +173,10 @@ Nie jest jednoznacznie określony próg procentowy pokrycia całości kodu testa
 Głównym założeniem jest utrzymanie pokrycia na poziomie 90%+ dla elementów dokonujących
 parsowania danych oraz obliczeń. 
 Zupełnie wykluczone z obowiązku testowania są:
-- Funkcje wyświetlające wyniki. Nie ma sensu testowanie wyjścia konsoli, poprawność
-i sensowność komunikatów będzie podczas testów manualnych w przypadku modyfikacji
-tych elementów.
-- Odpowiedzi na żądania wobec API NBP. Nie jest konieczne dublowanie pracy
+* Funkcje wyświetlające wyniki. Nie ma sensu testowanie wyjścia konsoli, poprawność
+oraz sensowność komunikatów będą sprawdzane podczas testów manualnych w przypadku 
+modyfikacji tych elementów.
+* Odpowiedzi na żądania wobec API NBP. Nie jest konieczne dublowanie pracy
 developerów z zespołu NBP.
 
 === Testowalność - scenariusze integracyjne/funkcjonalne
@@ -187,7 +187,7 @@ dostępnych dla użytkownika.
 === Wydajność - limity testów wydajnościowych
 Projekt nie narzuca konkretnych wymagań co do wydajności aplikacji.
 Raporty z testów wydajnościowych są generowane,
-jednak nie ma ustalonego limitu przekroczenie którego 
+jednak nie ma ustalonego limitu, którego przekroczenie 
 oznaczałoby testy za zakończone niepowodzeniem.
 
 [[section-technical-risks]]
