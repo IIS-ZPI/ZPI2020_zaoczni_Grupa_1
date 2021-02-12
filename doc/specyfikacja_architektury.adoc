@@ -173,6 +173,7 @@ Nie jest jednoznacznie określony próg procentowy pokrycia całości kodu testa
 Głównym założeniem jest utrzymanie pokrycia na poziomie 90%+ dla elementów dokonujących
 parsowania danych oraz obliczeń. 
 Zupełnie wykluczone z obowiązku testowania są:
+
 * Funkcje wyświetlające wyniki. Nie ma sensu testowanie wyjścia konsoli, poprawność
 oraz sensowność komunikatów będą sprawdzane podczas testów manualnych w przypadku 
 modyfikacji tych elementów.
