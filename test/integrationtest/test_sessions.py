@@ -1,4 +1,3 @@
-from re import A
 from unittest import TestCase
 
 from app.NBPRequestManager import NBPRequestManager
