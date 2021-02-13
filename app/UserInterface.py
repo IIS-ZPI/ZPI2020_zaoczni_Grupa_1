@@ -3,6 +3,7 @@ from app.ArgumentType import ArgumentType
 from app.TimeframeType import TimeframeType, print_available_timeframes
 from app.Util import parse_timeframe
 
+
 class UserInterface:
     def show_commands_list(self):
         print("Dostępne opcje:")
@@ -17,18 +18,18 @@ class UserInterface:
         args = []
         for argType in CommandsList[commandNr-1].argumentTypes:
             try:
-              if argType == ArgumentType.BASE_CURRENCY:
-                  args.append(input("Podaj walutę (kod, np. USD): "))
-              elif argType == ArgumentType.COMPARABLE_CURRENCY:
-                  args.append(input("Podaj drugą walutę (kod, np. USD): "))
-              elif argType in [ArgumentType.TIMEFRAME_ALL, ArgumentType.TIMEFRAME_LONG]:
-                  print_available_timeframes(argType)
-                  timeframe = parse_timeframe(input("Podaj okres czasu:"), argType)
-                  if timeframe == TimeframeType.INVALID:
-                      print("Niepoprawny argument")
-                      return
-                  args.append(timeframe)
-            except EOFError as error:
+                if argType == ArgumentType.BASE_CURRENCY:
+                    args.append(input("Podaj walutę (kod, np. USD): "))
+                elif argType == ArgumentType.COMPARABLE_CURRENCY:
+                    args.append(input("Podaj drugą walutę (kod, np. USD): "))
+                elif argType in [ArgumentType.TIMEFRAME_ALL, ArgumentType.TIMEFRAME_LONG]:
+                    print_available_timeframes(argType)
+                    timeframe = parse_timeframe(input("Podaj okres czasu:"), argType)
+                    if timeframe == TimeframeType.INVALID:
+                        print("Niepoprawny argument")
+                        return
+                    args.append(timeframe)
+            except EOFError:
                 print("Niepoprawny argument")
 
         result = CommandsList[commandNr-1].method(*args)
