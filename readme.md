@@ -13,6 +13,7 @@ DevOps: Tobiasz Bielas (@TobiaszBielas)
 4. [21.03](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/files/5862923/Sprint.21.03.Review.pdf)  
 5. [21.04](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/files/5899952/Sprint.21.04.Review.pdf)
 6. [21.05](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/files/5939766/Sprint.21.05.Review.pdf)
+7. [21.06](https://github.com/IIS-ZPI/ZPI2020_zaoczni_Grupa_1/files/5977954/Sprint.21.06.Review.pdf)
 
 ## Informacje o procesie Scrum/Agile w projekcie  
 * Każdy 'issue' czyli zadanie, w projekcie jest zamieszczone na tablicy (w modelu bazującym na Kanban).  
