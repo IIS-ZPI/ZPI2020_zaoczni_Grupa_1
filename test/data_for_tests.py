@@ -5,7 +5,6 @@ invalid_test_data = {
     "results": None
 }
 
-
 valid_test_EUR_data = {
     "dataset": {
         "table": "A",
@@ -94,8 +93,13 @@ valid_test_EUR_data = {
         }]
     },
     "results":
-    {'increase': 10, 'decrease': 9, 'stable': 0}
+    {
+        'increase': 10,
+        'decrease': 9,
+        'stable': 0
+    }
 }
+
 valid_test_USD_data = {
     "dataset":
     {
@@ -186,6 +190,9 @@ valid_test_USD_data = {
 
     },
     "results":
-    {'increase': 10, 'decrease': 9, 'stable': 0}
-
+    {
+        'increase': 10,
+        'decrease': 9,
+        'stable': 0
+    }
 }

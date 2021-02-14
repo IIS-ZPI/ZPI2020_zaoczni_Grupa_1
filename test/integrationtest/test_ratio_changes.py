@@ -11,10 +11,10 @@ class TestRatioChangesIntegration(TestCase):
         test_currency_two = "EUR"
         test_timeframe = TimeframeType.WEEK
 
-        ratio_changes_data_one = NBPRequestManager.get_ratio_changes(
-            test_currency_one, test_timeframe).json()
-        ratio_changes_data_two = NBPRequestManager.get_ratio_changes(
-            test_currency_two, test_timeframe).json()
+        ratio_changes_data_one = NBPRequestManager.get_currency_data(
+            test_currency_one, test_timeframe)
+        ratio_changes_data_two = NBPRequestManager.get_currency_data(
+            test_currency_two, test_timeframe)
 
         results = DataParser.parse_ratio_changes(
             ratio_changes_data_one, ratio_changes_data_two)
