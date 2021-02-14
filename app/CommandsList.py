@@ -6,7 +6,7 @@ from app.DataPresenter import DataPresenter
 CommandsList = [
     Command("sessions",
             DataPresenter.show_sessions,
-            "Sesje wzrostowych/spadkowych bez zmian",
+            "Sesje wzrostowe/spadkowe/bez zmian",
             [ArgumentType.BASE_CURRENCY, ArgumentType.TIMEFRAME_ALL]
             ),
     Command("statistics",

@@ -10,8 +10,8 @@ class TestSessionIntegration(TestCase):
         test_currency = "USD"
         test_timeframe = TimeframeType.WEEK
 
-        session_data = NBPRequestManager.get_sessions(
-            test_currency, test_timeframe).json()
+        session_data = NBPRequestManager.get_currency_data(
+            test_currency, test_timeframe)
         results = DataParser.parse_session(session_data)
         results_regex = "{'increase': [0-9]+, 'decrease': [0-9]+, 'stable': [0-9]+}"
 

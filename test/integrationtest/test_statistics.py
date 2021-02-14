@@ -10,8 +10,8 @@ class TestStatisticsIntegration(TestCase):
         test_currency = "USD"
         test_timeframe = TimeframeType.WEEK
 
-        statistics_data = NBPRequestManager.get_statistics(
-            test_currency, test_timeframe).json()
+        statistics_data = NBPRequestManager.get_currency_data(
+            test_currency, test_timeframe)
 
         results = DataParser.parse_statistics(statistics_data)
         results_regex = "{'median': [0-9]+.?[0-9]+, 'mode': [0-9]+.?[0-9]+, " + \
