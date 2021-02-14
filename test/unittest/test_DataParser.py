@@ -1,51 +1,67 @@
 from unittest import TestCase
 
 from app.DataParser import DataParser
+from test.data_for_tests import invalid_test_data
+from test.data_for_tests import valid_test_USD_data
+from test.data_for_tests import valid_test_EUR_data
+
 
 class TestDataParser(TestCase):
     def test_parse_session_validDataset(self):
-        valid_test_data = {
-            "dataset":
-            {
-                'code': 'USD',
-                'currency': 'dolar amerykański',
-                'rates': [
-                    {'effectiveDate': '2020-12-17', 'mid': 3.6254, 'no': '246/A/NBP/2020'}, 
-                    {'effectiveDate': '2020-12-18', 'mid': 3.6322, 'no': '247/A/NBP/2020'}, 
-                    {'effectiveDate': '2020-12-21', 'mid': 3.7082, 'no': '248/A/NBP/2020'}, 
-                    {'effectiveDate': '2020-12-22', 'mid': 3.6921, 'no': '249/A/NBP/2020'}, 
-                    {'effectiveDate': '2020-12-23', 'mid': 3.6919, 'no': '250/A/NBP/2020'}, 
-                    {'effectiveDate': '2020-12-24', 'mid': 3.6981, 'no': '251/A/NBP/2020'}, 
-                    {'effectiveDate': '2020-12-28', 'mid': 3.6639, 'no': '252/A/NBP/2020'}, 
-                    {'effectiveDate': '2020-12-29', 'mid': 3.6778, 'no': '253/A/NBP/2020'}, 
-                    {'effectiveDate': '2020-12-30', 'mid': 3.6901, 'no': '254/A/NBP/2020'}, 
-                    {'effectiveDate': '2020-12-31', 'mid': 3.7584, 'no': '255/A/NBP/2020'}, 
-                    {'effectiveDate': '2021-01-04', 'mid': 3.6998, 'no': '001/A/NBP/2021'}, 
-                    {'effectiveDate': '2021-01-05', 'mid': 3.7031, 'no': '002/A/NBP/2021'}, 
-                    {'effectiveDate': '2021-01-07', 'mid': 3.6656, 'no': '003/A/NBP/2021'}, 
-                    {'effectiveDate': '2021-01-08', 'mid': 3.6919, 'no': '004/A/NBP/2021'}
-                ], 
-                'table': 'A'
-            },
-            "results":
-            {
-                "increase": 8,
-                "decrease": 5,
-                "stable": 0
-            }
-        }
+        actual_results = DataParser.parse_session(
+            valid_test_USD_data["dataset"].copy())
 
-        actual_results = DataParser.parse_session(valid_test_data["dataset"])
-        self.assertEqual(actual_results, valid_test_data["results"])
+        self.assertEqual(actual_results, valid_test_USD_data["results"])
 
     def test_parse_session_invalidDataset(self):
-        invalid_test_data = {
-            "dataset":
-            {
-                'some rubbish data': 'invalid'
-            },
-            "results": None
-        }
-        
         actual_results = DataParser.parse_session(invalid_test_data["dataset"])
+
         self.assertEqual(actual_results, invalid_test_data["results"])
+
+    def test_parse_statistics_USD_valid_data(self):
+        actual_result = DataParser.parse_statistics(
+            valid_test_USD_data["dataset"].copy())
+        expected_result = {'median': 3.73, 'mode': 3.73,
+                           'standard deviation value': 0.026, 'coeficient of Variation': 0.697}
+
+        self.assertEqual(actual_result, expected_result)
+
+    def test_parse_statistics_invalid_data(self):
+        actual_result = DataParser.parse_statistics(
+            invalid_test_data["dataset"].copy())
+
+        self.assertIsNone(actual_result)
+
+    def test_get_currency_data_EUR_USD_valid(self):
+        session_data_EUR = valid_test_EUR_data["dataset"].copy()
+        session_data_USD = valid_test_USD_data["dataset"].copy()
+        actual_result = DataParser.parse_ratio_changes(
+            session_data_EUR, session_data_USD)
+        expected_result = -1.3278
+
+        self.assertEqual(expected_result, actual_result)
+
+    def test_get_currency_data_USD_EUR_valid(self):
+        session_data_EUR = valid_test_EUR_data["dataset"].copy()
+        session_data_USD = valid_test_USD_data["dataset"].copy()
+        actual_result = DataParser.parse_ratio_changes(
+            session_data_USD, session_data_EUR)
+        expected_result = 1.3457
+
+        self.assertEqual(expected_result, actual_result)
+
+    def test_get_currency_data_USD_invalid_data(self):
+        session_data_USD = valid_test_USD_data["dataset"].copy()
+        actual_result = DataParser.parse_ratio_changes(
+            session_data_USD, invalid_test_data.copy())
+        expected_result = None
+
+        self.assertEqual(expected_result, actual_result)
+
+    def test_get_currency_data_invalid_data_EUR(self):
+        session_data_EUR = valid_test_EUR_data["dataset"].copy()
+        actual_result = DataParser.parse_ratio_changes(
+            invalid_test_data.copy(), session_data_EUR)
+        expected_result = None
+
+        self.assertEqual(expected_result, actual_result)
