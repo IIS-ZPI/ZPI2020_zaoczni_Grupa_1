@@ -12,7 +12,7 @@ class UserInterface:
 
     def handle_command(self, commandNr):
         if commandNr not in range(1, len(CommandsList)+1):
-            print("Niepoprawna komenda")
+            print("Niepoprawna komenda.")
             return
 
         args = []
@@ -24,18 +24,18 @@ class UserInterface:
                     args.append(input("Podaj drugą walutę (kod, np. USD): "))
                 elif argType in [ArgumentType.TIMEFRAME_ALL, ArgumentType.TIMEFRAME_LONG]:
                     print_available_timeframes(argType)
-                    timeframe = parse_timeframe(input("Podaj okres czasu:"), argType)
+                    timeframe = parse_timeframe(input("Podaj okres czasu: "), argType)
                     if timeframe == TimeframeType.INVALID:
-                        print("Niepoprawny argument")
+                        print("Niepoprawny argument.")
                         return
                     args.append(timeframe)
             except EOFError:
-                print("Niepoprawny argument")
+                print("Niepoprawny argument.")
 
         result = CommandsList[commandNr-1].method(*args)
         if result:
-            print(f"Wynik: {result}")
-        input("Wciśnij enter aby kontynuować...")
+            print(f"Wynik:\n{result}")
+        input("Wciśnij [ENTER] aby kontynuować...")
 
     def listen_for_user_input(self):
         while True:
@@ -43,4 +43,4 @@ class UserInterface:
             try:
                 self.handle_command(int(input("Wybierz numer komendy: ")))
             except (ValueError, EOFError, TypeError):
-                print("Niepoprawna komenda")
+                print("Niepoprawna komenda\n")
